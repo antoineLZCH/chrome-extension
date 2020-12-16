@@ -13,7 +13,6 @@ export class App extends React.Component<{}, State> {
       chrome.tabs.query({currentWindow: true, active: true}, tabs => {
         const tab = tabs[0];
         chrome.tabs.sendMessage(tab.id || 0, {from: "popup", subject: "getFullName"}, response => {
-          console.log(response);
           this.setState({
             fullName: response.fullName,
             title: response.title,
