@@ -18,7 +18,9 @@ export class App extends React.Component<{}, State> {
             fullName: response.fullName,
             title: response.title,
             country: response.country,
-            imageSrc: response.imageSrc
+            imageSrc: response.imageSrc,
+            couvertureImage: response.couvertureImage,
+            actualCompanyImg: response.actualCompanyImg
           })
         });
       });
@@ -28,9 +30,14 @@ export class App extends React.Component<{}, State> {
   render() {
     return (
       <div className="app">
-        <img src={this.state.imageSrc} alt={this.state.fullName}/>
-        <div className="fullName">{this.state.fullName}</div>
-        <div className="title">{this.state.title}</div>
+        <div className="couverture" style={{backgroundImage: `url(${this.state.couvertureImage})`}}>
+          <img className="profile-image" src={this.state.imageSrc} alt={this.state.fullName}/>
+          <img className="actual-company" src={this.state.actualCompanyImg} alt="Actual Company"/>
+        </div>
+        <div className="content">
+          <div className="full-name">{this.state.fullName}</div>
+          <div className="title">{this.state.title}</div>
+        </div>
       </div>
     );
   }
